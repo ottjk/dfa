@@ -38,9 +38,9 @@ fn main() -> Result<()> {
     let cli = Cli::parse();
 
     let mut configs_path = cli.config
-        .unwrap_or(dirs::config_dir()
-                   .expect("Could not resolve config directory.")
-                   .join("dotfiles"));
+        .unwrap_or(dirs::home_dir()
+                   .expect("Could not resolve home directory.")
+                   .join(".local/share/dotfiles"));
     resolve_home(&mut configs_path);
 
     if !configs_path.try_exists().unwrap() {
